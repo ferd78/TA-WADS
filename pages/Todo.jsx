@@ -6,6 +6,7 @@ import { TodoList } from "../components/TodoList";
 
 function Todo() {
     const [todos, setTodos] = useState([]);
+    const [filter, setFilter] = useState('all');
 
 function addTodo(title) {
     setTodos((currentTodos) => {
@@ -22,7 +23,6 @@ function toggleTodo(id, completed) {
        if (todo.id === id) {
         return { ...todo, completed };
        }
-
 
        return todo;
      });
@@ -46,6 +46,28 @@ function editTodo(id, Title){
   }
 }
 
+
+function handleFilterState(event) {
+    setFilter(event.target.value);
+}
+    
+function filterTodos() {
+    if(filter == "completed") {
+          return todos.filter((todo) => todo.completed);
+    }
+
+    else if(filter == "uncompleted") {
+          return todos.filter((todo) => !todo.completed);
+    }
+
+    else {
+          return todos;
+    }
+
+}
+
+
+
 function deleteTodo(id) {
     setTodos((currentTodos) => {
         return currentTodos.filter((todo) => todo.id !== id);
@@ -53,10 +75,20 @@ function deleteTodo(id) {
  }
  
  return (
-    <>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
-    </>
+  <>
+    <TodoForm addTodo={addTodo} />
+    <div>
+      <br></br>
+        <label htmlFor="filter" className="font-mono font-semibold"> Filter: </label>
+        <br></br>
+        <select id="filter" value={filter} onChange={handleFilterState} className="font-mono font-semibold text-black rounded">
+            <option value="all" className="font-mono font-semibold">All</option>
+            <option value="completed" className="font-mono font-semibold">Completed</option>
+            <option value="uncompleted" className="font-mono font-semibold">Uncompleted</option>
+        </select>
+    </div>
+    <TodoList todos={filterTodos()} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
+  </>
   );
 }
 
