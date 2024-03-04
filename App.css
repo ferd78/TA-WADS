@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Liberation Mono, Helvetica, sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  background: #333;
+  background: #152238;
   color: hsl(200, 100%, 90%);
   max-width: 400px;
   padding: 1rem;
   margin: 0 auto;
 }
+
 
 .new-item-form {
   display: flex;
@@ -34,7 +36,8 @@ body {
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   cursor: pointer;
-  outline: none;
+  outline: none;  
+  font-weight: 600;
 }
 
 .btn:hover,
@@ -152,4 +155,6 @@ body {
 
 .list li:has(input:checked) label:hover::before {
   background: hsl(200, 100%, 30%);
-}
+}  
+
+
