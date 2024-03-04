@@ -18,7 +18,7 @@ export function TodoForm({ addTodo }) {
         <div>
             <form className="new-item-form">
                 <div className="form-row">
-                    <label htmlFor="item">New item</label>
+                    <label htmlFor="item" className="font-mono text-lg font-semibold text-center">Finish Your Tasks!</label>
                         <input
                         type="text"
                         id="item"
@@ -27,7 +27,7 @@ export function TodoForm({ addTodo }) {
                         />
                 </div>
             <button className="btn" onClick={handleSubmit}>
-                Add Items
+                Add New Task
             </button>
         </form>
         </div>
